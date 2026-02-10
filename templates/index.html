@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Valentine?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="card">
+    <h1>💌 Dear Panna, to the love of my life, and the fire of my loins.</h1>
+    <p class="note">
+
+Today is Valentine’s Day. I know the norm is to have this one amazing day where we get to celebrate each other and the amazing impact we have on each other’s lives. But what makes us so great is that we don’t necessarily believe in that. I think what makes us so special is that we celebrate each other every day. In the littlest of things, from our tiniest achievements, which may not even matter, we always know we have each other to share them with. And we know that the other person will celebrate with us. <br><br>
+
+This is a theme in our relationship - I like to call it oneness. We joke that we have the same brain cells, but if you really think about it, we kinda do. Our goals are one big joint goal, since we celebrate each other's wins and bring each other up after our tough times. Our mentality is one big joint mentality, since we have rubbed off on each other so much that at this point we are virtually indistinguishable (at least in terms of speaking patterns). And I find that so fascinating. Somehow we have managed to maintain our individuality while also melting into this amalgamation of a person together, which I find so amazing. <br><br>
+
+Another theme in our relationship has been togetherness. This year has been one of a lot of reflection for both of us, given that we are getting to the stage of making big decisions, which often result in compromise. It meant dealing with unknown situations, which is extremely scary. But just being there by each other's side, being the support system in the wheel, has been so incredible. We are starting new chapters in each of our lives, with me potentially going to the USA (fingers crossed) and you entering the doctor phase of your life (which is so amazing btw can I just say), and having this kind of togetherness and unity, knowing that we will always be there to light each other's paths, is so amazing. When I say that dealing with unknown situations is scary, it is also so exciting to navigate new terrain with you, and to learn how to adult with you. Adulthood is kinda unnerving, but there is no person I would rather grow into. You teach me so much, and it is genuinely a privilege to get to hear your perspectives. <br><br>
+
+Theme number three in our relationship has been silliness. The idea of three ‘ness’ in our relationship is very cute to me, in case you can’t tell hehehehe. We have the opportunity to be ourselves in front of each other. No need for any exhausting facades that we have to maintain the rest of the day, no need for charged, tiring conversations. We just get to be two silly little people who laugh at cat videos and six seven, and play random games and watch funny Netflix shows. We get to be each other in our rawest forms. And we love that about each other. I just know that when I get the privilege to live with you, I will absolutely adore the little silly things you do, and I will just be perpetually stuck to you. <br><br>
+
+I don’t mean to toot our own horn, but I think it's fair to say that we have long achieved couple goals status. With that being said, I want to take some time to talk about you, and the impact you, Ananya, as a person, have had on me, Ajay. <br><br>
+
+You have been the spark that has helped me become a better person. I know this sounds super dramatic, but genuinely. I feel like since I’ve started living my life with you, I have become genuinely more compassionate, while at the same time being a bit more pragmatic. I feel proud of the decisions I make now. I feel as though they are based on a more thorough evaluation instead of just vibes, which is something that I definitely picked up from you. Another thing I picked up from you is, albeit still something I am working on, discipline. I was really terribly undisciplined, but having a helping hand and a slight nudge when I was going off track really helped me a lot in trying to be focused. <br><br>
+
+Aside from that, your personality is really like that of a gem. You truly are a panna, a gem in a sea of mediocrity and hardheartedness. You have such an incredible tenacity in the work you do and the relationships you maintain, it really is so admirable. You are incredibly hardworking, and you will go to literally any extent to make sure that you get your work done. That is just amazing. You have done the most amazing things this past year, and I am so confident that year 1 Panna would be in absolute shock at the things you are doing right now. <br><br>
+
+The next year has so much excitement in line. It is the year that is going to be most heavily characterized by change. With me potentially moving to the USA, it means more opportunities for physical contact. It is also huge for you, with some amazing placements at Cleveland Clinic and Harvard lined up, as well as a Spain trip and hopefully some conferences, it is going to be an incredible year filled with incredible work. This year is going to be our year, the same way each successive year has been getting better and better, and I can’t wait to live out my life’s journey with you. I want to get married to you, I want to live my whole life with you, and I really can’t wait to make this a reality. My little sugarbun, you don’t even know how important you are to me. I would give up everything in this world for you. You are my light, and I love you till the end of time. <br><br>
+
+With that being said, I have just one question for you 👀 <br><br>
+
+    </p>
+
+    <hr />
+
+    <h2>Will you be my valentine?</h2>
+
+
+    <img id="catImg"
+    class="cat"
+    src="{{ url_for('static', filename='cats/smiling_cat.png') }}"
+    alt="Sad cat"
+    />
+
+    <div class="buttons">
+    <a id="yesBtn" class="btn yes" href="{{ url_for('yes') }}">Yes</a>
+    <button id="noBtn" class="btn no" type="button">No</button>
+    </div>
+
+    <p id="hint" class="hint">it's a tricky question...</p>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

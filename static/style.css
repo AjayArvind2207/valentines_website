@@ -1,0 +1,280 @@
+:root{
+  --bg: #fff1f5;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --yes: #16a34a;
+  --no:  #ef4444;
+  --shadow: 0 12px 30px rgba(0,0,0,.12);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color: var(--text);
+  background: radial-gradient(circle at top, #ffe4ec, var(--bg));
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+
+.card{
+  width: min(680px, 100%);
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.card.big{
+  width: min(720px, 100%);
+  text-align: center;
+}
+
+h1 { margin: 0 0 10px; }
+h2 { margin: 14px 0 10px; }
+
+.note{
+  line-height: 1.6;
+  color: #374151;
+}
+
+hr{
+  border: none;
+  border-top: 1px solid #f1c7d4;
+  margin: 18px 0;
+}
+
+.buttons{
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  margin-top: 12px;
+}
+
+/* Buttons use flex-grow to “inflate” */
+.btn{
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: flex-grow .25s ease, transform .15s ease, opacity .25s ease;
+  user-select: none;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn.yes{
+  background: rgba(22,163,74,.12);
+  color: #0f7a34;
+  outline: 2px solid rgba(22,163,74,.35);
+}
+
+.btn.no{
+  background: rgba(239,68,68,.10);
+  color: #b91c1c;
+  outline: 2px solid rgba(239,68,68,.30);
+}
+
+.hint{
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+/* When YES “wins” */
+.fullscreen-yes body,
+body.fullscreen-yes{
+  padding: 0;
+  place-items: stretch;
+}
+
+body.fullscreen-yes .card{
+  width: 100%;
+  height: 100vh;
+  border-radius: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+body.fullscreen-yes .buttons{
+  width: min(680px, 92vw);
+}
+
+body.fullscreen-yes #noBtn{
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Celebration styling */
+body.celebration{
+  background: radial-gradient(circle at top, #fff, #ffe4ec);
+}
+
+.hearts{
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px 0 16px;
+}
+
+/* simple “confetti-ish” animation */
+.confetti{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(255,0,128,.35) 2px, transparent 3px) 0 0/60px 60px,
+    radial-gradient(circle, rgba(255,180,0,.35) 2px, transparent 3px) 20px 10px/70px 70px,
+    radial-gradient(circle, rgba(0,200,255,.30) 2px, transparent 3px) 10px 30px/80px 80px;
+  animation: drift 6s linear infinite;
+  opacity: .7;
+}
+
+.cat{
+  display: block;
+  width: min(260px, 80%);
+  margin: 12px auto 18px;
+  transition: transform .25s ease, filter .25s ease;
+}
+
+/* subtle drama as things get worse */
+.cat.sadder{
+  filter: grayscale(0.4);
+  transform: scale(0.97);
+}
+
+.cat.very-sad{
+  filter: grayscale(0.8);
+  transform: scale(0.94);
+}
+
+/* FULL CELEBRATION PAGE */
+body.celebration {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #fff, #ffe0ec, #ffd6e8);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Celebration Card */
+.celebration-card {
+  background: rgba(255,255,255,0.9);
+  border-radius: 28px;
+  padding: clamp(32px, 6vw, 72px);
+  box-shadow: 0 25px 60px rgba(255, 105, 180, 0.25);
+  max-width: 900px;
+  width: 92%;
+  text-align: center;
+  animation: popIn 0.6s ease-out;
+}
+
+/* Headline */
+.celebration-title {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: #be185d;
+  margin-bottom: 24px;
+}
+
+/* Main message */
+.celebration-message {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 28px;
+}
+
+/* Divider */
+.celebration-divider {
+  font-size: 1.5rem;
+  margin: 20px 0;
+  color: #f472b6;
+}
+
+/* Sub text */
+.celebration-sub {
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+/* Floating hearts */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floating-hearts span {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatUp 8s linear infinite;
+  opacity: 0.75;
+}
+
+.floating-hearts span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.floating-hearts span:nth-child(2) { left: 25%; animation-delay: 2s; }
+.floating-hearts span:nth-child(3) { left: 40%; animation-delay: 4s; }
+.floating-hearts span:nth-child(4) { left: 55%; animation-delay: 1s; }
+.floating-hearts span:nth-child(5) { left: 70%; animation-delay: 3s; }
+.floating-hearts span:nth-child(6) { left: 85%; animation-delay: 5s; }
+
+@keyframes floatUp {
+  from {
+    bottom: -10%;
+    transform: translateY(0) scale(0.9);
+  }
+  to {
+    bottom: 110%;
+    transform: translateY(-40px) scale(1.1);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Celebration image (kissing cat) */
+.celebration-image {
+  display: block;
+  margin: 20px auto 28px;
+  max-width: min(320px, 70%);
+  height: auto;
+  filter: drop-shadow(0 12px 20px rgba(0,0,0,0.15));
+  animation: softFloat 4s ease-in-out infinite;
+}
+
+@keyframes softFloat {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+
+
+
+@keyframes drift{
+  from { transform: translateY(-20px); }
+  to   { transform: translateY(20px); }
+}

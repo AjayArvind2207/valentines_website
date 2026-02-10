@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WE GOT A YES!</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="celebration">
+
+  <!-- floating hearts -->
+  <div class="floating-hearts" aria-hidden="true">
+    <span>💖</span><span>💘</span><span>💕</span><span>💞</span>
+    <span>💓</span><span>💗</span>
+  </div>
+
+  <main class="celebration-card">
+    <h1 class="celebration-title">
+    YAYAYAYAYAYAY WE DID IT 💖
+    </h1>
+
+    <img
+    class="celebration-image"
+    src="{{ url_for('static', filename='cats/kissing_cat.png') }}"
+    alt="Kissing cats"
+    />
+
+    <p class="celebration-message">
+    I can't wait to live the rest of my life with you.<br/>
+    Happy Valentine's Day, my love.
+    </p>
+
+    <p class="celebration-sub">
+      Thank you for being you 💕
+    </p>
+  </main>
+
+</body>
+</html>
