@@ -1,3 +1,6 @@
+/* =========================================================
+   THEME
+   ========================================================= */
 :root{
   --bg: #fff1f5;
   --card: #ffffff;
@@ -6,9 +9,14 @@
   --yes: #16a34a;
   --no:  #ef4444;
   --shadow: 0 12px 30px rgba(0,0,0,.12);
+  --shadow-strong: 0 25px 60px rgba(255, 105, 180, 0.25);
 }
 
+/* =========================================================
+   BASE
+   ========================================================= */
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
@@ -20,7 +28,18 @@ body {
   padding: 24px;
 }
 
+h1 { margin: 0 0 10px; }
+h2 { margin: 14px 0 10px; }
 
+hr{
+  border: none;
+  border-top: 1px solid #f1c7d4;
+  margin: 18px 0;
+}
+
+/* =========================================================
+   SHARED COMPONENTS
+   ========================================================= */
 .card{
   width: min(680px, 100%);
   background: var(--card);
@@ -34,20 +53,18 @@ body {
   text-align: center;
 }
 
-h1 { margin: 0 0 10px; }
-h2 { margin: 14px 0 10px; }
-
 .note{
   line-height: 1.6;
   color: #374151;
 }
 
-hr{
-  border: none;
-  border-top: 1px solid #f1c7d4;
-  margin: 18px 0;
+.hint{
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: .95rem;
 }
 
+/* Buttons */
 .buttons{
   display: flex;
   gap: 12px;
@@ -68,7 +85,7 @@ hr{
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
-  transition: flex-grow .25s ease, transform .15s ease, opacity .25s ease;
+  transition: flex-grow .25s ease, transform .15s ease, opacity .25s ease, box-shadow .15s ease;
   user-select: none;
 }
 
@@ -86,14 +103,9 @@ hr{
   outline: 2px solid rgba(239,68,68,.30);
 }
 
-.hint{
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: .95rem;
-}
-
-/* When YES “wins” */
-.fullscreen-yes body,
+/* =========================================================
+   HOME PAGE: YES BUTTON TAKES OVER
+   ========================================================= */
 body.fullscreen-yes{
   padding: 0;
   place-items: stretch;
@@ -117,20 +129,85 @@ body.fullscreen-yes #noBtn{
   pointer-events: none;
 }
 
-/* Celebration styling */
-body.celebration{
-  background: radial-gradient(circle at top, #fff, #ffe4ec);
+/* Cat mood image */
+.cat{
+  display: block;
+  width: min(260px, 80%);
+  margin: 12px auto 18px;
+  transition: transform .25s ease, filter .25s ease;
 }
 
-.hearts{
-  font-size: 2rem;
+.cat.sadder{
+  filter: grayscale(0.4);
+  transform: scale(0.97);
+}
+
+.cat.very-sad{
+  filter: grayscale(0.8);
+  transform: scale(0.94);
+}
+
+/* ==============================
+   QUIZ OPTIONS — BIG BOOK STYLE
+   ============================== */
+/* Layout row */
+body.quiz-page .options-row{
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 12px 0 16px;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 14px;
 }
 
-/* simple “confetti-ish” animation */
+/* Make options equal width blocks */
+body.quiz-page .option{
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: #f6e6c3;
+  border: 1px solid rgba(120, 90, 40, 0.25);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* Hide radio */
+body.quiz-page .option input{
+  display: none;
+}
+
+/* Hover */
+body.quiz-page .option:hover{
+  background: #edd8a8;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(120, 90, 40, 0.15);
+}
+
+/* Selected state */
+body.quiz-page .option:has(input:checked){
+  background: #8b5e3c;
+  border-color: #6e472c;
+  color: white;
+  box-shadow: 0 16px 40px rgba(120, 90, 40, 0.25);
+}
+
+
+/* =========================================================
+   CELEBRATION PAGE
+   (uses <body class="celebration">)
+   ========================================================= */
+body.celebration {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #fff, #ffe0ec, #ffd6e8);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px;
+}
+
+/* Confetti-ish animated background (optional) */
 .confetti{
   position: fixed;
   inset: 0;
@@ -143,32 +220,9 @@ body.celebration{
   opacity: .7;
 }
 
-.cat{
-  display: block;
-  width: min(260px, 80%);
-  margin: 12px auto 18px;
-  transition: transform .25s ease, filter .25s ease;
-}
-
-/* subtle drama as things get worse */
-.cat.sadder{
-  filter: grayscale(0.4);
-  transform: scale(0.97);
-}
-
-.cat.very-sad{
-  filter: grayscale(0.8);
-  transform: scale(0.94);
-}
-
-/* FULL CELEBRATION PAGE */
-body.celebration {
-  min-height: 100vh;
-  background: radial-gradient(circle at top, #fff, #ffe0ec, #ffd6e8);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  font-family: 'Poppins', sans-serif;
+@keyframes drift{
+  from { transform: translateY(-20px); }
+  to   { transform: translateY(20px); }
 }
 
 /* Celebration Card */
@@ -176,37 +230,38 @@ body.celebration {
   background: rgba(255,255,255,0.9);
   border-radius: 28px;
   padding: clamp(32px, 6vw, 72px);
-  box-shadow: 0 25px 60px rgba(255, 105, 180, 0.25);
+  box-shadow: var(--shadow-strong);
   max-width: 900px;
   width: 92%;
   text-align: center;
   animation: popIn 0.6s ease-out;
 }
 
-/* Headline */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
 .celebration-title {
   font-size: clamp(2.2rem, 5vw, 3.6rem);
   font-weight: 700;
   color: #be185d;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
-/* Main message */
 .celebration-message {
   font-size: clamp(1.2rem, 3vw, 1.6rem);
   line-height: 1.6;
   color: #374151;
-  margin-bottom: 28px;
+  margin: 0 0 22px;
 }
 
-/* Divider */
 .celebration-divider {
   font-size: 1.5rem;
-  margin: 20px 0;
+  margin: 18px 0;
   color: #f472b6;
 }
 
-/* Sub text */
 .celebration-sub {
   font-size: 1.1rem;
   color: #6b7280;
@@ -234,31 +289,14 @@ body.celebration {
 .floating-hearts span:nth-child(6) { left: 85%; animation-delay: 5s; }
 
 @keyframes floatUp {
-  from {
-    bottom: -10%;
-    transform: translateY(0) scale(0.9);
-  }
-  to {
-    bottom: 110%;
-    transform: translateY(-40px) scale(1.1);
-  }
+  from { bottom: -10%; transform: translateY(0) scale(0.9); }
+  to   { bottom: 110%; transform: translateY(-40px) scale(1.1); }
 }
 
-@keyframes popIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-/* Celebration image (kissing cat) */
+/* Kissing cat image */
 .celebration-image {
   display: block;
-  margin: 20px auto 28px;
+  margin: 16px auto 22px;
   max-width: min(320px, 70%);
   height: auto;
   filter: drop-shadow(0 12px 20px rgba(0,0,0,0.15));
@@ -272,9 +310,202 @@ body.celebration {
 }
 
 
-
-
-@keyframes drift{
-  from { transform: translateY(-20px); }
-  to   { transform: translateY(20px); }
+/* ===========================
+   QUIZ PAGE: BOOK BACKGROUND LOCK
+   Put this at the VERY BOTTOM of style.css
+   =========================== */
+body.quiz-page{
+  background: linear-gradient(180deg, #fdf6dc 0%, #f7e7c6 100%) !important;
+  color: #3a332b;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
 }
+
+/* subtle paper texture */
+body.quiz-page::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 4px 4px;
+  opacity: 0.25;
+}
+
+/* paper page card look */
+body.quiz-page .card{
+  background: #fffaf0;
+  border: 1px solid rgba(120, 90, 40, 0.15);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(120, 90, 40, 0.15);
+  padding: 42px 44px;
+}
+
+/* optional: title color for book vibe */
+body.quiz-page h1{
+  color: #5b4636;
+  text-align: center;
+}
+
+/* =====================================
+   BOOK STYLE SUBMIT BUTTON
+   ===================================== */
+
+body.quiz-page button.btn-submit{
+  display: block;
+  margin: 32px auto 0;
+  padding: 16px 36px;
+  border-radius: 30px;
+  border: 2px solid #6e472c;
+  background: linear-gradient(145deg, #f185eb, #c425ca);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 10px 25px rgba(120, 90, 40, 0.25);
+}
+
+/* Hover */
+body.quiz-page button.btn-submit:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(120, 90, 40, 0.35);
+  background: linear-gradient(145deg, #6e472c, #8b5e3c);
+}
+
+/* Press */
+body.quiz-page button.btn-submit:active{
+  transform: translateY(1px);
+  box-shadow: 0 6px 18px rgba(120, 90, 40, 0.25);
+}
+
+/* =========================================
+   QUIZ RESULTS (PASS / FAIL) — BOOK THEME
+   Use:
+   <body class="quiz-page quiz-result pass">
+   <body class="quiz-page quiz-result fail">
+   ========================================= */
+
+body.quiz-page.quiz-result .card{
+  max-width: 760px;
+  text-align: center;
+  padding: 52px 48px;
+}
+
+/* Big icon bubble */
+body.quiz-page.quiz-result .result-badge{
+  width: 86px;
+  height: 86px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  font-size: 2.2rem;
+  border: 2px solid rgba(120, 90, 40, 0.25);
+  background: rgba(246, 230, 195, 0.75);
+  box-shadow: 0 14px 30px rgba(120, 90, 40, 0.18);
+}
+
+/* Headline */
+body.quiz-page.quiz-result .result-title{
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: #5b4636;
+}
+
+/* Main text */
+body.quiz-page.quiz-result .result-text{
+  margin: 0 auto 22px;
+  max-width: 55ch;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: rgba(91, 70, 54, 0.85);
+}
+
+/* Score pill */
+body.quiz-page.quiz-result .score-pill{
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 90, 40, 0.25);
+  background: rgba(255, 250, 240, 0.85);
+  color: rgba(91, 70, 54, 0.9);
+  margin-bottom: 22px;
+}
+
+/* Action buttons row */
+body.quiz-page.quiz-result .result-actions{
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* Link/button style consistent with submit */
+body.quiz-page.quiz-result .result-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 2px solid #6e472c;
+  background: linear-gradient(145deg, #8b5e3c, #a47148);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  box-shadow: 0 10px 25px rgba(120, 90, 40, 0.25);
+}
+
+body.quiz-page.quiz-result .result-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(120, 90, 40, 0.30);
+  background: linear-gradient(145deg, #6e472c, #8b5e3c);
+}
+
+body.quiz-page.quiz-result .result-btn:active{
+  transform: translateY(1px);
+  box-shadow: 0 6px 18px rgba(120, 90, 40, 0.22);
+}
+
+/* Secondary button (retry) */
+body.quiz-page.quiz-result .result-btn.secondary{
+  background: rgba(255,250,240,0.9);
+  color: #6e472c;
+  border-color: rgba(110, 71, 44, 0.45);
+  box-shadow: none;
+}
+
+body.quiz-page.quiz-result .result-btn.secondary:hover{
+  background: rgba(246,230,195,0.8);
+  box-shadow: 0 12px 28px rgba(120,90,40,0.12);
+}
+
+/* PASS accents */
+body.quiz-page.quiz-result.pass .result-badge{
+  border-color: rgba(34,197,94,0.35);
+  background: rgba(34,197,94,0.14);
+}
+
+body.quiz-page.quiz-result.pass .result-title{
+  color: #166534;
+}
+
+/* FAIL accents */
+body.quiz-page.quiz-result.fail .result-badge{
+  border-color: rgba(239,68,68,0.35);
+  background: rgba(239,68,68,0.12);
+}
+
+body.quiz-page.quiz-result.fail .result-title{
+  color: #991b1b;
+}
+

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>Almost 👀</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="quiz-page quiz-result fail">
+  <main class="card">
+    <div class="result-badge">😔</div>
+    <h1 class="result-title">Score: {{ score }}/10</h1>
+
+    <p class="result-text">
+      Not quite 8/10… try again, I believe in you 👀
+    </p>
+
+    <div class="result-actions">
+      <a class="result-btn secondary" href="{{ url_for('quiz') }}">Retry 🔁</a>
+    </div>
+  </main>
+</body>
+</html>

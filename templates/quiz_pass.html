@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>You Passed!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="quiz-page quiz-result pass">
+  <main class="card">
+    <div class="result-badge">🎉</div>
+    <h1 class="result-title">You scored {{ score }}/10!</h1>
+
+    <p class="result-text">
+      You may now continue to the last stage hehe.
+    </p>
+
+    <div class="result-actions">
+      <a class="result-btn" href="{{ url_for('home') }}">Open the Surprise</a>
+    </div>
+  </main>
+</body>
+</html>
